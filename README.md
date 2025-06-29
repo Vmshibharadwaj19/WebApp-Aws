@@ -80,7 +80,7 @@ Using VS Code's file explorer, I could see the generated project folders:
 
 We edited `index.jsp` to display:
 ```html
-<h1>Hello Chandu</h1>
+<h1>Hello Vamshi</h1>
 ```
 
 ---
