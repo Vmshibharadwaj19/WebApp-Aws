@@ -1,7 +1,7 @@
 
 # 🚀 Set Up a Web App in the Cloud Using AWS & VS Code
 
-**Author**: Chandu Vinukonda  
+**Author**: Vamshi Prasad Goteti
 **Project by**: NextWork Student @ [NextWork.org](https://nextwork.org)
 
 ---
