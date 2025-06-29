@@ -1,53 +1,108 @@
-# Analysis of Station Footfall Trends Across the TFL Train Network (2019–2024)
-## Introduction 
-This project analyzes daily footfall data from TFL train stations across London between 2019 and 2024. Using metrics such as average daily usage, seasonality dependency, and footfall volatility, stations have been segmented into functional groups—including Low Footfall Stops, Residential Connectors, and Busy Interchanges. The core focus is on understanding patterns of station usage and building a data-driven framework for station classification based on zone and usage behavior.
 
-## Dataset Overview
-1. TFL Station Footfall Data (2019–2024)
-Daily footfall data was sourced from the official [Transport for London website](https://crowding.data.tfl.gov.uk/), where each year’s data is published as a separate file. The dataset includes key columns such as date, station name, entry tap count, and exit tap count. This rich time series data provides valuable insights into how station usage fluctuates over time across the TFL network.
+# Set Up a Web App Using AWS and VS Code  
+**Author:** Vamshi Prasad Goteti  
+**Date:** 27/06/2025  
+**Email:** vamshibharadwaj19@gmail.com  
 
-2. TFL Station Metadata
-Complementary metadata about each station was collected from a [Kaggle dataset](https://www.kaggle.com/datasets/olisao/transport-for-london-tfl-entry-and-exit-dataset/data), which includes details like the station’s zone, lines served, network classification, and geographical coordinates (latitude and longitude). This data enabled spatial segmentation and contextual understanding of station behavior within the broader network.
+---
 
-## Tools & Concepts
-#### Tools Used:
-- Microsoft Excel – Used for initial data preparation, including combining yearly footfall files into a single consolidated dataset.
-- Power BI – Used to develop interactive dashboards and implement a scoring system using advanced DAX queries.
+## ✨ Introducing Today's Project  
+Today I set up a simple web application in the cloud using **Amazon EC2** and **Visual Studio Code (VS Code)**. This was part of a hands-on DevOps learning journey with a goal of eventually building a full CI/CD pipeline.
 
-#### Key Concepts Applied:
-- Comparative Analysis – Benchmarking stations across usage metrics to identify relative performance.
-- Z-Score Calculation – Standardizing metrics to support meaningful comparison and segmentation.
-- Time Series Trend Analysis – Examining seasonal patterns and long-term usage shifts across years.
-- Footfall Volatility & Seasonality Metrics – Measuring variability and dependency on seasonal factors to classify station behavior.
+---
 
-## Methodology
-1. **Data Cleaning & Transformation**
-Once the Excel CSV files were consolidated, the dataset was loaded into Power BI. Using the Power Query Editor, data types were validated, and missing values, duplicates, and inconsistencies were addressed. This step ensured the data was clean and ready for analysis, laying the foundation for accurate insights.
+## 🔧 Key Tools & Concepts  
+- **Amazon EC2**: Virtual machine in the cloud for app deployment  
+- **SSH Connections**: Secure login to the EC2 instance  
+- **Key Pairs**: Secure authentication for remote access  
+- **VS Code with Remote-SSH Extension**: Live editing files on the server  
+- **Java & Maven**: Java-based web application creation using archetypes  
 
-2. **Station Usage Overview**
-The first step in analysis was to visualize station usage patterns through a set of interactive dashboards in Power BI. Key metrics such as average daily footfall, monthly usage breakdowns, year-over-year (YoY) calculations, and identification of the busiest stations and peak days/months were included. This provided a comprehensive understanding of how footfall varied over time and highlighted seasonal trends within the data.
-![Alt text](img/yoy.png)
+---
 
-4. **Station Segmentation**
-To categorize stations, a scoring system was carefully designed, supported by analytical concepts. Five main metrics were considered:
-- Average daily footfall
-- Average YoY growth
-- Day dependency index
-- Month dependency index
-- Footfall volatility
+## 🚀 Project Reflection  
+This 2-hour project included some real-world troubleshooting. One surprise was being asked to use both **VS Code Remote-SSH** and the **local terminal** to edit and validate changes on the server. Successfully SSH'ing into the EC2 instance and seeing the edits live was the most rewarding part!
 
-Each of these metrics was calculated for every station. To ensure consistency and comparability across stations, Z-score normalization was implemented. This method was chosen because Z-scores standardize each metric, removing the influence of scale differences and making it easier to compare stations with varying footfall levels. Based on the individual Z-scores, a composite Z-score was computed for each station. Stations were then assigned labels according to the range in which their composite Z-scores fell, classifying them into distinct groups.
-![Alt text](img/Z_AvgDailyFootfall.png)
+---
 
+## 🖥️ Launching an EC2 Instance  
+We started by launching an **Ubuntu-based EC2 instance**. This server hosted our web app.  
 
-4. **Station Dashboard**
-To facilitate deeper analysis, a Station Stats Dashboard was created. This interactive dashboard allows users to select any station and view its individual metrics, historical footfall patterns, and classification details.
-![Alt text](img/StationStatsDashboard.png)
+---
 
+## 🔐 Enabling SSH  
+SSH allows secure command-line access to our EC2 instance. Port 22 was opened in the EC2 **security group** to allow this connection.
 
-## Findings 
-1.	**Dramatic COVID-19 Impact and Recovery Pattern** - The network experienced a severe 62% drop in footfall during 2020, falling from 3.17 billion to 1.21 billion passengers. Recovery has been steady but incomplete, with 2024 figures (2.72 billion) still 14% below pre-pandemic levels. 
-2.	**Zone Distribution Reveals Central London Dominance** - Nearly half (45.52%) of all network usage occurs in Zone 1, with Zone 2 accounting for an additional 27.73%. This concentrated usage pattern underscores the continued importance of central London 
-3.	**Elizabeth Line Integration Transforming Key Stations** - Stations connected to the Elizabeth Line show exceptional growth, with Tottenham Court Road (169% YoY growth in 2022) and Farringdon (156% YoY growth in 2022) experiencing dramatic increases in footfall.
-4.	**Changing Weekly Usage Patterns** - Thursday has emerged as the busiest day (16.88K average footfall), while Monday shows relatively lower usage (13.52K), suggesting a mid-week concentration of office attendance. This indicates a lasting change in work patterns post-pandemic. 
-5.	**Stratford as a Zone 2 Outlier** - Despite being outside Zone 1, Stratford ranks as the 5th busiest station with 131,097 daily passengers, outperforming many central London hubs. With a strong Z-score of 0.62, it demonstrates the growing importance of strategic outer hubs and the successful development of East London as a major transport and commercial centre.
+**Key command used:**
+```bash
+ssh -i "nextwork-keypair.pem" ec2-user@<your-public-ip>
+```
+
+---
+
+## 🗝️ Creating Key Pairs  
+A key pair was created through AWS Console. The **private key** `nextwork-keypair.pem` was downloaded and moved into a folder called `devops`.
+
+**Windows Permissions Fix:**
+```bash
+icacls "nextwork-keypair.pem" /reset
+icacls "nextwork-keypair.pem" /grant:r "USERNAME:R"
+icacls "nextwork-keypair.pem" /inheritance:r
+```
+
+---
+
+## 🧑‍💻 Setting Up VS Code  
+Installed the **Remote-SSH extension** in VS Code, allowing direct connection and editing of server files.
+
+Configuration included:
+- EC2 public IP as hostname
+- Path to the `.pem` file
+- SSH username: usually `ubuntu`
+
+---
+
+## ☕ Maven & Java  
+- Installed **Java and Maven** on EC2 to generate the web app.  
+- Used Maven archetypes to scaffold a basic Java web project.
+
+**Command used to generate the project:**
+```bash
+mvn archetype:generate
+```
+
+---
+
+## 🗂️ Application Structure  
+Using VS Code's file explorer, I could see the generated project folders:
+- `/src` - Contains Java source code
+- `/webapp` - Contains static and dynamic HTML (like `index.jsp`)
+
+We edited `index.jsp` to display:
+```html
+<h1>Hello Chandu</h1>
+```
+
+---
+
+## ✍️ Remote Editing with VS Code  
+The Remote-SSH extension allowed me to:
+- Browse the server filesystem  
+- Edit files in real-time  
+- View updates by refreshing the hosted site  
+
+---
+
+## 📅 What’s Next?  
+This was just **Part 1** of a series of DevOps projects. Upcoming steps include:
+- CI/CD automation with GitHub Actions  
+- Dockerizing the application  
+- Hosting via Nginx or Load Balancer  
+
+---
+
+**🌐 Learn More:** Check out [NextWork.org](https://nextwork.org) for more DevOps projects and tutorials.  
+
+---
+
+**Everyone deserves to be in a job they love.**
