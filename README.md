@@ -101,7 +101,7 @@ This was just **Part 1** of a series of DevOps projects. Upcoming steps include:
 
 ---
 
-**🌐 Learn More:** Check out [NextWork.org](https://nextwork.org) for more DevOps projects and tutorials.  
+ 
 
 ---
 
