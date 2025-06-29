@@ -15,7 +15,7 @@
 
 ## 📸 Project Overview
 
-![Launching EC2](images/image1.jpg)
+![Launching EC2](web-app-aws/media/image1.jpg)
 
 Today, I set up a web app in the cloud using **AWS EC2** and **VS Code**. I learned to:
 - Launch an EC2 instance  
@@ -27,7 +27,7 @@ Today, I set up a web app in the cloud using **AWS EC2** and **VS Code**. I lear
 
 ## 🧠 Reflection
 
-![Terminal Success](images/image2.jpg)
+![Terminal Success](web-app-aws/media/image2.jpg)
 
 One surprise was the “secret mission” where we edited the file via terminal after the IDE. It was fun and insightful to experience both.
 
@@ -38,7 +38,7 @@ One surprise was the “secret mission” where we edited the file via terminal 
 
 ## 🌐 Launching the EC2 Instance
 
-![EC2 Instance](images/image3.jpg)
+![EC2 Instance](web-app-aws/media/image3.jpg)
 
 EC2 instances are virtual cloud computers. I launched one to host my web app.
 
@@ -46,7 +46,7 @@ EC2 instances are virtual cloud computers. I launched one to host my web app.
 
 ## 🔐 SSH & Key Pairs
 
-![Key Pair Setup](images/image4.jpg)
+![Key Pair Setup](web-app-aws/media/image4.jpg)
 
 SSH is a secure protocol to access remote servers. AWS gives us a **key pair**:
 - **Public key** stays with AWS  
@@ -58,7 +58,7 @@ We moved this `.pem` file into our `devops` folder.
 
 ## 🧑‍💻 VS Code Setup
 
-![VS Code Connected](images/image5.jpg)
+![VS Code Connected](web-app-aws/media/image5.jpg)
 
 VS Code helps us write and edit code easily. The **Remote-SSH extension** lets us connect directly to EC2 for remote editing.
 
@@ -88,7 +88,7 @@ Before running this, we ensured **port 22** was open in the EC2 security group.
 
 ## ☕ Maven & Java Setup
 
-![Maven Project](images/image6.jpg)
+![Maven Project](web-app-aws/media/image6.jpg)
 
 We used **Maven** to generate a Java web project:
 
@@ -102,7 +102,7 @@ This command created folders like `/src` and `/webapp`.
 
 ## 🗂️ Project Structure
 
-![Folder View](images/image7.jpg)
+![Folder View](web-app-aws/media/image7.jpg)
 
 - `src/`: Contains Java source code  
 - `webapp/`: Contains HTML & JSP files  
@@ -111,7 +111,7 @@ This command created folders like `/src` and `/webapp`.
 
 ## 📝 Editing index.jsp
 
-![Editing index.jsp](images/image8.jpg)
+![Editing index.jsp](web-app-aws/media/image8.jpg)
 
 Using Remote SSH, we edited the `index.jsp` file:
 
@@ -129,7 +129,7 @@ This displays the custom message on the web app.
 
 ## 🎯 Final Result
 
-![Web App Running](images/image9.jpg)
+![Web App Running](web-app-aws/media/image9.jpg)
 
 The web app was successfully hosted on AWS EC2 and updated remotely using VS Code. ✅
 
